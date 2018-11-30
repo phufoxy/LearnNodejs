@@ -1,11 +1,16 @@
-const http = require('http'); // loads the http module
-http.createServer((request, response) => {
-    // 1 tell the browser 
-    response.writeHead(200, {
-        'Content-Type': 'text/plain'
-    });
-    // write text the body web
-    response.write('Hello , World\n');
-    // tell the server that all of the response headers and body have been sent
-    response.end();
-}).listen(8000);
+const express = require('express');
+// create an Express applicaion using top-level funtion
+const app = express();
+
+// define port number as 8000
+const port = 8000;
+
+// router http get request to the speccified path
+app.get('/', function (request, response) {
+    response.send('Hello,World');
+});
+// Make the app listen on port 8000
+app.listen(port, function () {
+    console.log('Server listening on http://localhost: ' + port);
+});
+
